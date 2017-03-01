@@ -1,5 +1,11 @@
 How to contribute:
 
+Before you begin do the following:
+  a. In Eclipse: Right Click on project -> Select 'Team' -> 'Fetch From Upstream' -> 'Ok'
+  b. Right Click on project -> Select 'Team' -> 'Rebase' -> 'Rebase' -> 'Ok'
+  // This will make sure your version of our project is up to date. 
+
+
 1. Create a new branch with the same title as the Trello card you're completing. 
    Replace spaces with '-' and lowercase all letters.
    Example: 'Vector Addition' := 'vector-addition'
