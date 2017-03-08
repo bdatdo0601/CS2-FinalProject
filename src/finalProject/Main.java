@@ -4,8 +4,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hello World.");
-		System.out.println("Hello from example branch.");
+		double[][] matrixA = {{1, 2}, {3, 4}};
+		
+		Inverse inverseA = new Inverse(matrixA);
+		
+		System.out.println(inverseA.toString());
 	}
 
 }
