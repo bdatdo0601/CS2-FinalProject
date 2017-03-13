@@ -9,22 +9,13 @@
 
 package finalProject;
 
-public class Inverse {
-	
-	private double[][] originalMatrix;
-	private double[][] inverseMatrix;
-	private boolean isInv;
-	public Inverse() {
-		this.isInv = false;
-	}
+public class Inverse extends Matrix{
 	
 	public Inverse(double[][] matrix) {
-		this.originalMatrix = matrix;
-		this.isInv = isInvertible(matrix);
-		if ( this.isInv ) setInverse(matrix);
+		super(matrix);
 	}
-	
-	public boolean isInvertible(double[][] matrix) {
+
+	public static boolean isInvertible(double[][] matrix) {
 		
 		int rowCount = matrix.length;
 		int colCount = matrix[0].length; 
@@ -42,11 +33,7 @@ public class Inverse {
 		
 	}
 	
-	public void setMatrix(double[][] matrix) {
-		this.originalMatrix = matrix;
-	}
-	public void setInverse(double[][] matrix) {
-		
+	public static double[][] solveInverse(double[][] matrix) {
 		double a = matrix[0][0];
 		double b = matrix[0][1];
 		double c = matrix[1][0];
@@ -56,19 +43,6 @@ public class Inverse {
 		
 		double[][] inverse = {{m*d, m*(-b)}, {m*(-c), m*a}};
 		
-		this.inverseMatrix = inverse;
+		return inverse;
 	}
-	
-	public double[][] getMatrix() {
-		return this.originalMatrix;
-	}
-	public double[][] getInverse() {
-		return this.inverseMatrix;
-	}
-	
-	public String toString() {
-		double[][] inverse = getInverse();
-		return "[ ["+inverse[0][0]+", "+inverse[0][1]+"], ["+inverse[1][0]+", "+inverse[1][1]+"] ]";
-	}
-
 }
