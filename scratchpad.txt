@@ -1,0 +1,6 @@
+1. Create instance of Matrix with multidim array
+   - Should determine if the given Matrix has an Inverse
+   - Should create method, that when called:
+     a. checks if the Matrix is invertible
+     	a1. if so create Inverse and assign to this.inverse
+     	a2. if not do nothing.

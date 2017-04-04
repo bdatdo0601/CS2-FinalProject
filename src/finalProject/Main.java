@@ -1,42 +1,39 @@
 package finalProject;
 
+import java.util.Scanner;
+
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.linear.DecompositionSolver;
+import org.apache.commons.math3.linear.EigenDecomposition;
+import org.apache.commons.math3.linear.RealMatrix;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		double[][] mA = {{1, 2}, {3, 4}};
+		
+//		System.out.println("Add Matrices Example");
+//		Matrix A = new Matrix(2,2);
+//		Matrix B = new Matrix(2,2);
 //		
-//		Matrix matrixA = new Matrix(mA);
-//		matrixA.solveInverse();
-//		System.out.println(matrixA.inverse.toString());
+//		Matrix X = Matrix.add(A, B);
+//		System.out.println(X.toString());
 //		
-//		Matrix m = new Matrix(mA);
-//		System.out.println(m.toString());
-//		double[][] matrixB = {{1, 2, 3, 4}, {5, 6, 7, 8}};
-//		m.setMatrix(matrixB);
-//		System.out.println(m.toString());
-//		double[][] matrixC = {{1, 2}, {3, 4}, {5, 6} , {7, 8}};
-//		m.setMatrix(matrixC);
-//		System.out.println(m.toString());
+//		System.out.println("Multiply Matrices Example");
+//		Matrix A = new Matrix(2,2);
+//		Matrix B = new Matrix(2,2);
+//		
+//		Matrix X = Matrix.multiply(A, B);
+//		System.out.println(X.toString());
 		
-		
-		
-		double[][] b = {{10, 20}, {30, 40}}; //create multidim array
-		
-		Matrix matrixB = new Matrix(b); //create instance of Matrix
-		
-		matrixB.solveInverse(); //get the inverse of matrixB
-		
-		System.out.println(matrixB.inverse.toString()); //print to console
-		
-		double[][] b2 = {{1, 2}, {3, 4}}; //create new multidim array
-		
-		matrixB.setMatrix(b2); //set the matrix 
-		
-		//By resetting the multidim array in matrixB we 
-		// are auto generating the new inverse (if it exists)
-		
-		System.out.println(matrixB.inverse.toString()); //print new inverse to console
-	}
+//		System.out.println("Solving Inverse Example");
+//		Matrix C = new Matrix(2, 2);
+//		Matrix inverseC = Matrix.getInverse(C);
+//		System.out.println(inverseC.toString());
 
+		double[][] data = { {1, 0}, {0, 1} };
+		RealMatrix n = new Array2DRowRealMatrix(data);
+		EigenDecomposition eigs = new EigenDecomposition(n);
+		
+	}
 }
