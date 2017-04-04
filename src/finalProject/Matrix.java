@@ -20,8 +20,7 @@ public class Matrix {
 	
 	private double[] eigenvalues;
 	
-	
-	
+
 //	Constructors and enterValues method
 	
 	public Matrix () { }
@@ -31,13 +30,16 @@ public class Matrix {
 		this.numCols = cols;
 		this.matrix = new double[rows][cols];
 		this.enterValues(rows, cols);
-		this.hasInverse = this.isInvertible(this.matrix);
+		this.hasInverse = isInvertible(this.matrix);
+		this.transpose = transpose(this.matrix);
 	}
 	
 	public Matrix(double[][] m) {
 		this.matrix = m;
 		this.numRows = m.length;
 		this.numCols = m[0].length;
+		this.hasInverse = isInvertible(this.matrix);
+		this.transpose = transpose(this.matrix);
 	}
 	
 	private void enterValues(int r, int c) {
@@ -150,32 +152,28 @@ public class Matrix {
 // Inverse 
 	
 	public static boolean isInvertible(double[][] matrix) {
-		
 		int rowCount = matrix.length;
 		int colCount = matrix[0].length; 
-		
 		boolean is2by2 = (rowCount == colCount) && (rowCount == 2);
-		
-		double a = matrix[0][0];
-		double b = matrix[0][1];
-		double c = matrix[1][0];
-		double d = matrix[1][1];
-		
-		boolean mulDifTest = (a*d) - (b*c) != 0;
-		
-		return is2by2 && mulDifTest;
-		
+		if ( is2by2 ) {
+			double a = matrix[0][0];
+			double b = matrix[0][1];
+			double c = matrix[1][0];
+			double d = matrix[1][1];
+			boolean mulDifTest = (a*d) - (b*c) != 0;
+			return is2by2 && mulDifTest;
+		} else { 
+			return false;
+		}
 	}
 	
-	public static Matrix getInverse(Matrix A) {
-		boolean hasInverse = A.getHasInverse();
+	public static Matrix getInverse(Matrix A) throws Exception {
 		double[][] matrix = A.getMatrix();
-		if (hasInverse) {
+		if (A.hasInverse) {
 			double[][] inverse = Matrix.solveInverse(matrix);
 			return new Matrix(inverse);
 		} else {
-			System.out.println("This matrix is not invertible.");
-			return new Matrix();
+			throw new Exception("This matrix is not invertible.");
 		}
 	}
 	
@@ -186,14 +184,54 @@ public class Matrix {
 		double d = matrix[1][1];
 		
 		double m = 1 / (a*d - b*c);
-		
 		double[][] inverse = {{m*d, m*(-b)}, {m*(-c), m*a}};
-		
 		return inverse;
 	}
+	
+// Determinant
+	//Parameters: Matrix and its dimension 
+	public static double getDeterminant(Matrix X) throws Exception {
+		int numRow = X.getNumRows();
+    	int numCol = X.getNumCols();
+    	if (numRow != numCol) {
+    		throw new Exception("Matrix must be square in order to find determinant.");
+    	}
+    	
+    	double[][] M = X.getMatrix();
+    	int dim = numRow; 
+    	
+    	return determinant(M, dim);
+	}
+    private static double determinant(double[][] M, int dim) throws Exception {
+        double det = 0;
+        
+        if(dim == 1) {
+            det = M[0][0];
+        } else if (dim == 2) {
+            det = M[0][0]*M[1][1] - M[1][0]*M[0][1]; //ad - bc
+        } else {
+            det = 0;
+            for(int j1=0;j1<dim;j1++) {
+                double[][] m = new double[dim-1][dim-1];
+                //m is the minor matrix
+                for(int i = 1; i < dim; i++) { //because the first row is always expanded upon in my algorithm
+                    int j2=0;
+                    for(int j=0;j<dim;j++) {
+                        if(j == j1) continue; //continue without processing statements below
+                        m[i-1][j2] = M[i][j]; //otherwise, put it into the minor
+                        j2++;
+                    }
+                }
+                det += Math.pow(-1.0,1.0+j1+1.0)* M[0][j1] * determinant(m, dim-1); //to do large determinants it's - + - + ....etc 
+                System.out.println("determinant: " + det); 
+            }   
+        }
+        return det;
+    }
 
+	
 // Reduced Row Echelon Form
-	protected double[][] solveRREF(double[][] matrix) {
+	public double[][] solveRREF(double[][] matrix) {
 		
 		// get reduced row echelon form
 		double[][] result = matrix;
@@ -205,6 +243,23 @@ public class Matrix {
 	public double[][] getRREF() {
 		return this.rREF;
 	}
+
+// Transpose of a matrix
+	public static double[][] transpose(double[][] m) {
+		int rows = m.length;
+		int cols = m[0].length;
+		//just flip order 
+		double[][] t = new double[cols][rows];
+		for(int c = 0; c < m[0].length; c++) {
+			for(int r = 0; r < m.length; r++) {
+				t[c][r] = m[r][c];
+			}
+		}
+		return t;
+	}
+
+	
+// toString method - useful for command line based testing
 	
 	public String toString() {
 		double[][] matrix = this.matrix;
