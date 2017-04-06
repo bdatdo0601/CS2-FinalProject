@@ -2,10 +2,10 @@ package finalProject;
 
 import java.util.Scanner;
 
-import org.apache.commons.math3.linear.Array2DRowRealMatrix;
-import org.apache.commons.math3.linear.DecompositionSolver;
-import org.apache.commons.math3.linear.EigenDecomposition;
-import org.apache.commons.math3.linear.RealMatrix;
+//import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+//import org.apache.commons.math3.linear.DecompositionSolver;
+//import org.apache.commons.math3.linear.EigenDecomposition;
+//import org.apache.commons.math3.linear.RealMatrix;
 
 public class Main {
 
@@ -31,9 +31,9 @@ public class Main {
 //		Matrix inverseC = Matrix.getInverse(C);
 //		System.out.println(inverseC.toString());
 
-		double[][] data = { {1, 0}, {0, 1} };
-		RealMatrix n = new Array2DRowRealMatrix(data);
-		EigenDecomposition eigs = new EigenDecomposition(n);
+//		double[][] data = { {1, 0}, {0, 1} };
+//		RealMatrix n = new Array2DRowRealMatrix(data);
+//		EigenDecomposition eigs = new EigenDecomposition(n);
 		
 	}
 }
