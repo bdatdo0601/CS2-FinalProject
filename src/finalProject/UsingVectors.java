@@ -1,6 +1,4 @@
 package finalProject;
-import java.util.Vector;
-
 
 public class UsingVectors {
 

@@ -8,7 +8,6 @@ public class EigenVector {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter in dimension of square matrix: ");
 		int dim = scan.nextInt();
-		System.out.println("test");
 
 		double[][] matrix = new double[dim][dim + 1];
 
@@ -16,7 +15,6 @@ public class EigenVector {
 
 		for (int r = 0; r < matrix.length; r++) {
 			for (int c = 0; c < matrix[0].length - 1; c++) {
-				System.out.println("test");
 				matrix[r][c] = scan.nextDouble();
 			}
 
@@ -31,7 +29,7 @@ public class EigenVector {
 
 		}
 
-		// print(matrix);
+		print(matrix);
 		System.out.println("Enter Eigenvalue: ");
 		int eig = scan.nextInt();
 
@@ -39,63 +37,105 @@ public class EigenVector {
 
 	}
 
-	// Currently can only do for 2x2 or 3x3 matrices
-	public static void eigenVector(double m[][], double eigVal) {
-		System.out.println("A - r*I: ");
-
-		for (int r = 0; r < m.length; r++) {
-			for (int c = 0; c < m[0].length; c++) {
-				if (r == c) {
+	//Currently can only do for 2x2 or 3x3 matrices
+	public static void eigenVector(double m[][], double eigVal)
+	{
+		System.out.println("A - r*I: "); 
+		
+		for(int r = 0; r < m.length; r++)
+		{
+			for(int c = 0; c < m[0].length; c++)
+			{
+				if(r == c )
+				{
 					m[r][c] = m[r][c] - eigVal;
 				}
 			}
 		}
-
-		print(m);
+		
+		//Row-reducing matrix from above 
+		System.out.println("Creating augmented matrix: "); 
+		double[][] rowReduced = rowReduce(m);
+		
+	/**	
+		for(int r = 0; r < rowReduced.length; r++)
+		{
+			for(int c = 0; c < rowReduced[0].length; c++)
+			{
+				
+			}
+		}
+	**/	
+			
+		print(rowReduced);
+		
+		double[] eigVector = new double[m.length];
+		
+		//2 rows 
+		
+		if(m[0].length == 2)
+		{
+			if(m[m.length-1][m[0].length - 2] == 0 )
+			{
+				eigVector[eigVector.length-1] = 1;
+			}
+			else
+			{
+				eigVector[eigVector.length-1] = 0/(m[m.length][m[0].length - 2]);
+			}
+			
+			eigVector[0] = -(eigVector[eigVector.length-1]) / (m[0][0]);
+			
+			
+			System.out.println("EigenVector is: "); 
+			for(int r = 0; r<eigVector.length; r++)
+			{
+				System.out.print("["+ eigVector[r] + ",");
+				
+				if(r == eigVector.length-1)
+				{
+					System.out.print(eigVector[r] + "]");
+				}
+				
+			}
+			
+		}
+		
+		//3 rows 
+		
+		if(m[0].length == 3)
+		{
+			/*
+			 *  if: 
+			 *  1 2 3 0
+			 *  0 1 2 0
+			 *  0 0 0 0
+			 */
+			if(m[m.length-1][m[0].length - 2] == 0 )
+			{
+				eigVector[2] = 1;
+			}
+			/*
+			 * else: 
+			 * 1 2 3 0
+			 * 0 1 2 0
+			 * 0 0 1 0
+			 */
+			else
+			{
+				eigVector[2] = 0/(m[m.length -1][m[0].length - 2]);
+			}
+			
+			eigVector[1] = -(eigVector[2])/ m[1][1];
+			
+			eigVector[0] = (-(eigVector[1])-eigVector[2]) / m[0][0];
+			
+			printVector(eigVector);
+			
+			
+		}
+		
 	}
-
-	/**
-	 * //Row-reducing matrix from above System.out.println("Creating augmented
-	 * matrix: "); double[][] rowReduced = rowReduce(m);
-	 * 
-	 * 
-	 * print(rowReduced);
-	 * 
-	 * double[] eigVector = new double[m.length];
-	 * 
-	 * //2 rows
-	 * 
-	 * if(m[0].length == 2) { if(m[m.length-1][m[0].length - 2] == 0 ) {
-	 * eigVector[eigVector.length-1] = 1; } else { eigVector[eigVector.length-1]
-	 * = 0/(m[m.length][m[0].length - 2]); }
-	 * 
-	 * eigVector[0] = -(eigVector[eigVector.length-1]) / (m[0][0]);
-	 * 
-	 * 
-	 * System.out.println("EigenVector is: "); for(int r = 0;
-	 * r<eigVector.length; r++) { System.out.print("["+ eigVector[r] + ",");
-	 * 
-	 * if(r == eigVector.length-1) { System.out.print(eigVector[r] + "]"); }
-	 * 
-	 * }
-	 * 
-	 * }
-	 * 
-	 * //3 rows
-	 * 
-	 * if(m[0].length == 3) { /* if: 1 2 3 0 0 1 2 0 0 0 0 0
-	 * 
-	 * if(m[m.length-1][m[0].length - 2] == 0 ) { eigVector[2] = 1; } /* else: 1
-	 * 2 3 0 0 1 2 0 0 0 1 0
-	 * 
-	 * else { eigVector[2] = 0/(m[m.length -1][m[0].length - 2]); }
-	 * 
-	 * eigVector[1] = -(eigVector[2])/ m[1][1];
-	 * 
-	 * eigVector[0] = (-(eigVector[1])-eigVector[2]) / m[0][0];
-	 * 
-	 * printVector(eigVector);
-	 **/
 
 	public static void printVector(double[] v) {
 		System.out.println("EigenVector is: ");
