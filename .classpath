@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="/Users/arrowoode/Documents/workspaceCSII/CS2-FinalProject/Libs/commons-math3-3.6.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/arrowoode/Documents/workspaceCSII/CS2-FinalProject/Libs/commons-math3-3.6.1-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/arrowoode/Documents/workspaceCSII/CS2-FinalProject/Libs/commons-math3-3.6.1-test-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/arrowoode/Documents/workspaceCSII/CS2-FinalProject/Libs/commons-math3-3.6.1-tests.jar"/>
+	<classpathentry kind="lib" path="/Users/arrowoode/Documents/workspaceCSII/CS2-FinalProject/Libs/commons-math3-3.6.1-tools.jar"/>
+	<classpathentry kind="lib" path="/Users/arrowoode/Documents/workspaceCSII/CS2-FinalProject/Libs/commons-math3-3.6.1.jar"/>
+>>>>>>> f31742a171c25bebe452eb8fe13fead5c87a18f3
 	<classpathentry kind="output" path="bin"/>
 </classpath>
