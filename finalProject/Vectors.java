@@ -3,6 +3,8 @@ package finalProject;
 import java.util.Vector; //using preset Vector class
 import java.util.Scanner;
 
+
+
 public class Vectors 
 {
 

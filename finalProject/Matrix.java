@@ -1,7 +1,15 @@
 
 package finalProject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.linear.EigenDecomposition;
+import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.linear.RealVector;
 
 public class Matrix {
 	
@@ -30,15 +38,22 @@ public class Matrix {
 		this.numCols = cols;
 		this.matrix = new double[rows][cols];
 		this.enterValues(rows, cols);
-		this.hasInverse = isInvertible(this.matrix);
 		this.transpose = transpose(this.matrix);
 	}
 	
-	public Matrix(double[][] m) {
+	public Matrix(double[][] m) throws Exception {
 		this.matrix = m;
 		this.numRows = m.length;
 		this.numCols = m[0].length;
 		this.hasInverse = isInvertible(this.matrix);
+		this.transpose = transpose(this.matrix);
+	}
+	
+	public Matrix(double[][] m, boolean isInvertible) {
+		this.matrix = m;
+		this.numRows = m.length;
+		this.numCols = m[0].length;
+		this.hasInverse = isInvertible;
 		this.transpose = transpose(this.matrix);
 	}
 	
@@ -75,7 +90,7 @@ public class Matrix {
 //	Matrix B = new Matrix(2,2);
 //	Matrix x = Matrix.add(A, B);
 	
-	public static Matrix add(Matrix matrixA, Matrix matrixB) {
+	public static Matrix add(Matrix matrixA, Matrix matrixB) throws Exception {
 		double[][] a = matrixA.getMatrix();
 		double[][] b = matrixB.getMatrix();
 		
@@ -115,7 +130,7 @@ public class Matrix {
 //	Matrix B = new Matrix(2,2);
 //	Matrix x = Matrix.multiply(A, B);
 	
-	public static Matrix multiply(Matrix matrixA, Matrix matrixB) {
+	public static Matrix multiply(Matrix matrixA, Matrix matrixB) throws Exception {
 		
 		double[][] a = matrixA.getMatrix();
 		double[][] b = matrixB.getMatrix();
@@ -151,7 +166,7 @@ public class Matrix {
 	
 // Inverse 
 	
-	public static boolean isInvertible(double[][] matrix) {
+	public static boolean isInvertible(double[][] matrix) throws Exception {
 		int rowCount = matrix.length;
 		int colCount = matrix[0].length; 
 		boolean is2by2 = (rowCount == colCount) && (rowCount == 2);
@@ -163,15 +178,9 @@ public class Matrix {
 			boolean mulDifTest = (a*d) - (b*c) != 0;
 			return is2by2 && mulDifTest;
 		} else if(rowCount == colCount) { 
-			Matrix reduced = rowReduce(new Matrix(matrix));
-			double[][] rm = reduced.getMatrix();
-			boolean isInv = true;
-			for ( int i = 0; i < rm.length; i++) {
-				for ( int j = 0; j < rm[i].length; j++) {
-					if( j == i && rm[i][j] == 0 ) isInv = false;
-				}
-			}
-			return isInv;
+			Matrix m = new Matrix(matrix, false);
+			double det = Matrix.getDeterminant(m);
+			return det != 0;
 		} else {
 			return false;
 		}
@@ -251,22 +260,16 @@ public class Matrix {
 	    int col = m[0].length;	    
 	    int rowOn; //row currently examining 	    
 	    boolean end = false;
-	    
 	    for(int r = 0; r < row && !end; r++) {
 	        print(m); //continuously print out the steps to row-reduce 
-	        
 	        System.out.println();
-
 	        if(col <= pivotNum) {//When checking the elements in row, it reached the end
 	            end = true;
 	            break; //terminate loop
 	        }
-
 	        rowOn=r;
-
 	        while(!end && m[rowOn][pivotNum] == 0) { //Checking the numbers going down the column, if that number is 0, continue down
 	        	rowOn++; //Increment rowOn if that element is 0
-	            
 	            if(row == rowOn) { //hit the end of the matrix's column
 	                rowOn=r; 	                
 	                pivotNum++; // Allows the matrix to check the next column
@@ -279,11 +282,9 @@ public class Matrix {
 	       
 	        if(!end && m[rowOn][pivotNum] != 0) {//goes here if that index from above isn't 0
 	        	swapRows(m, rowOn, r); //First thing it does is try to swap. Won't affect matrix if it can't swap anyway (aka "swap with itself")
-	        	
 	            if(m[r][pivotNum] != 0) {//As long as that element isn't 0 ...
 	                multiplyRow(m, r, (1.0 / m[r][pivotNum])); //Multiply CURRENT row by scalar multiple 
 	            }
-
 	            for(rowOn = 0; rowOn < row; rowOn++) { //this for loop makes everything else (except pivot) 0 in that column 
 	                if(rowOn != r) { //if it's not the same row, then add CURRENT row to the other rows
 	                    addRows(m, m[rowOn][pivotNum], r, rowOn);
@@ -291,7 +292,7 @@ public class Matrix {
 	            }
 	        }
 	    }
-	    return new Matrix(m);
+	    return new Matrix(m, true);
 	}
 	
 	private static void swapRows(double [][] m, int row1, int row2)
@@ -375,6 +376,21 @@ public class Matrix {
 
 // End of Transpose
 	
+// EIGS
+	
+	public static double[] getEigenValues(double[][] matrix) {
+		RealMatrix n = new Array2DRowRealMatrix(matrix);
+		EigenDecomposition eigs = new EigenDecomposition(n);
+		double[] eigVals = eigs.getRealEigenvalues();
+		return eigVals;
+	}
+	public static String getEigenVectors(double[][] matrix, int i) {
+		RealMatrix n = new Array2DRowRealMatrix(matrix);
+		EigenDecomposition eigs = new EigenDecomposition(n);
+		RealVector v = eigs.getEigenvector(i);
+		return v.toString();
+	}
+	
 // toString method - useful for command line based testing
 	
 	public String toString() {
@@ -385,7 +401,7 @@ public class Matrix {
 		
 		str.append("\n");
 		for (int i = 0; i < matrix.length; i++) {
-			s.append("  [ ");
+			s.append("[ ");
 			for (int j = 0; j < matrix[i].length; j++) {
 				String ss = j == matrix[i].length - 1 ? " " : ", ";
 				s.append(matrix[i][j] + ss);
@@ -397,5 +413,64 @@ public class Matrix {
 		str.append("");
 		
 		return str.toString();
+	}
+	
+// parse Method
+	public static Matrix parseUserInputToMatrix(String in) throws Exception {
+		String validTokenPattern = "[\\[\\]\\d\\;\\,\\s]+";
+		Pattern validTokens = Pattern.compile(validTokenPattern);
+	
+		if ( !Pattern.matches(validTokenPattern, in) ) {
+			throw new Exception("String does not match.");
+		} // else continue
+		
+		String numberPattern = "\\d+\\.*\\d*\\s*[\\,|\\;]*";
+		Pattern numberMatcher = Pattern.compile(numberPattern);
+		
+		// get all the matches
+		Matcher m = numberMatcher.matcher(in);
+		
+		ArrayList<ArrayList<Double>> outer = new ArrayList<ArrayList<Double>>();
+		
+		String match;
+		double num;
+		ArrayList<Double> inner = new ArrayList<Double>();
+		
+		boolean hasRowCountBeenSet = false;
+		int rowCount = 0;
+		
+		while(m.find()) {
+			match = in.substring(m.start(), m.end());
+			if ( match.contains(",") ) {
+				match = match.replace(",", "");
+				num = Double.parseDouble(match);
+				inner.add(num);
+			} else {
+				match = match.replaceAll(";", "");
+				num = Double.parseDouble(match);
+				inner.add(num);
+				
+				if (!hasRowCountBeenSet) {
+					rowCount = inner.size();
+					hasRowCountBeenSet = true;
+				} else if ( rowCount != inner.size()) throw new Exception("Matrix rows not same size");
+				
+				ArrayList<Double> temp = (ArrayList<Double>) inner.clone();
+				outer.add(temp);
+				inner.clear();
+			} 
+		}
+		
+		double[][] matrix = new double[outer.size()][rowCount];
+		for (int row = 0; row < matrix.length; row++) {
+			ArrayList<Double> v = outer.get(row);
+			for (int col = 0; col < matrix[row].length; col++) {
+				double d =  v.get(col).doubleValue();
+				System.out.println("D: " + d);
+				matrix[row][col] = d;
+			}
+		}
+		
+		return new Matrix(matrix);
 	}
 }
