@@ -242,7 +242,7 @@ public class EigenVector {
 				{
 					System.out.print(matrix[r][c]);
 				} 
-				 else 
+				   else 
 				{
 					System.out.print(matrix[r][c] + ", ");
 				}
