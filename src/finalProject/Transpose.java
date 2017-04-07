@@ -22,7 +22,7 @@ public class Transpose
 	
 	public static void main(String[] args) 
 	{
-Scanner scan = new Scanner(System.in); 
+		Scanner scan = new Scanner(System.in); 
 		
 		System.out.println("Enter number of rows and columns of matrix: "); 
 		int row = scan.nextInt();
