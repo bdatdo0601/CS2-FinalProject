@@ -19,7 +19,7 @@
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Label alignment="CENTER" layoutX="295.0" layoutY="-5.0" prefHeight="47.0" prefWidth="197.0" text="Vector">
+                  <Label alignment="CENTER" layoutX="295.0" layoutY="-5.0" prefHeight="47.0" prefWidth="197.0" text="Vectors">
                      <font>
                         <Font size="47.0" />
                      </font>
@@ -32,9 +32,12 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="346.0" layoutY="83.0" prefHeight="27.0" prefWidth="319.0" />
-            <TextField layoutX="346.0" layoutY="180.0" prefHeight="27.0" prefWidth="316.0" />
-            <Button layoutX="142.0" layoutY="173.0" mnemonicParsing="false" text="Button" />
+            <TextField fx:id="V2" layoutX="40.0" layoutY="288.0" prefHeight="27.0" prefWidth="211.0" promptText="Enter V2" />
+            <TextField fx:id="V1" layoutX="40.0" layoutY="150.0" prefHeight="27.0" prefWidth="203.0" promptText="Enter V1" />
+            <Button layoutX="278.0" layoutY="177.0" mnemonicParsing="false" text="Add" />
+            <Button layoutX="278.0" layoutY="216.0" mnemonicParsing="false" text="Subtract" />
+            <Button layoutX="278.0" layoutY="257.0" mnemonicParsing="false" text="Multiply" />
+            <TextField fx:id="V3" layoutX="538.0" layoutY="216.0" promptText="Result" />
          </children>
       </Pane>
    </center>

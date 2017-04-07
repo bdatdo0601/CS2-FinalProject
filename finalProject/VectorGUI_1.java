@@ -221,8 +221,8 @@ public class VectorGUI_1 extends Application
         //THIS IS WHERE U PUT IN COORDINATES TO PLOT IN GRAPH: 
         ArrayList<Coord3d> coord = new ArrayList<Coord3d>();
         coord.add(new Coord3d(1,2,3));
-        coord.add(new Coord3d(1,2,3));
-        coord.add(new Coord3d(2,4,6));
+        coord.add(new Coord3d(4,5,6));
+        coord.add(new Coord3d(5,7,9));
 
 
         final Shape surface = Builder.buildDelaunay(coord);
