@@ -13,40 +13,41 @@ import javafx.stage.Stage;
 
 public class AdvancedScene {
 	static Matrix userMatrix;
-	
+
 	public static Scene advancedScene(Stage primaryStage) {
-		
-	// -----------------------------------------------
-	// Labels
-		HBox l_sceneTitle = new HBox(new Label("Advanced Functions\nWorks best with nXn matrices\nMake sure to parse first."));
+
+		// -----------------------------------------------
+		// Labels
+		HBox l_sceneTitle = new HBox(
+				new Label("Advanced Functions\nWorks best with nXn matrices\nMake sure to parse first."));
 		l_sceneTitle.setAlignment(Pos.CENTER);
-		
+
 		HBox l_instruction = new HBox(new Label("Enter matrix: "));
 		l_instruction.setAlignment(Pos.CENTER);
-		
+
 		HBox l_result = new HBox(new Label("Parsed matrix: "));
 		l_result.setAlignment(Pos.CENTER);
-		
+
 		HBox l_transpose = new HBox(new Label("Transpose of matrix: "));
 		l_transpose.setAlignment(Pos.CENTER);
-		
+
 		HBox l_determinant = new HBox(new Label("Determinant of matrix: "));
 		l_determinant.setAlignment(Pos.CENTER);
-		
+
 		HBox l_invertible = new HBox(new Label("Matrix invertibility: "));
 		l_invertible.setAlignment(Pos.CENTER);
-		
-	// -----------------------------------------------
-	// TextFields
+
+		// -----------------------------------------------
+		// TextFields
 		HBox inputBox = new HBox();
 		inputBox.setSpacing(10);
 		inputBox.setAlignment(Pos.CENTER);
-		
+
 		TextField matrixInput = new TextField();
-		
+
 		inputBox.getChildren().add(matrixInput);
-	// -----------------------------------------------
-	// Output Labels
+		// -----------------------------------------------
+		// Output Labels
 		HBox parseOut = new HBox(new Label());
 		parseOut.setSpacing(10);
 		parseOut.setAlignment(Pos.CENTER);
@@ -63,36 +64,36 @@ public class AdvancedScene {
 		invertibleOut.setSpacing(10);
 		invertibleOut.setAlignment(Pos.CENTER);
 		// ---
-	// -----------------------------------------------	
-	// Buttons
+		// -----------------------------------------------
+		// Buttons
 		HBox homeBt = new HBox();
 		homeBt.setSpacing(10);
 		homeBt.setAlignment(Pos.CENTER);
-		
+
 		Button btHome = new Button("Home");
 		// ---
 		HBox parseBt = new HBox();
 		parseBt.setSpacing(10);
 		parseBt.setAlignment(Pos.CENTER);
-		
+
 		Button btParse = new Button("Parse");
 		// ---
 		HBox transposeBt = new HBox();
 		transposeBt.setSpacing(10);
 		transposeBt.setAlignment(Pos.CENTER);
-		
+
 		Button btTranspose = new Button("Transpose");
 		// ---
 		HBox determinantBt = new HBox();
 		determinantBt.setSpacing(10);
 		determinantBt.setAlignment(Pos.CENTER);
-		
+
 		Button btDeterminant = new Button("Determinant");
 		// ---
 		HBox invertibleBt = new HBox();
 		invertibleBt.setSpacing(10);
 		invertibleBt.setAlignment(Pos.CENTER);
-		
+
 		Button btInvertible = new Button("Invertible");
 		// ---
 		// Button .setOnAction -----------------------
@@ -101,7 +102,7 @@ public class AdvancedScene {
 		});
 		btParse.setOnAction(e -> {
 			String input = matrixInput.getText();
-			
+
 			String userMatrixString;
 			try {
 				userMatrix = Matrix.parseUserInputToMatrix(input);
@@ -112,7 +113,7 @@ public class AdvancedScene {
 				userMatrix = new Matrix();
 				userMatrixString = "Error";
 			}
-			
+
 			parseOut.getChildren().clear();
 			Label newLabel = new Label(userMatrixString);
 			parseOut.getChildren().add(newLabel);
@@ -143,7 +144,7 @@ public class AdvancedScene {
 			determinantOut.getChildren().clear();
 			Label newLabel;
 			if (wasChanged) {
-				 newLabel = new Label(Double.toString(d));
+				newLabel = new Label(Double.toString(d));
 			} else {
 				newLabel = new Label("Determinant could not be found.");
 			}
@@ -161,50 +162,47 @@ public class AdvancedScene {
 		transposeBt.getChildren().add(btTranspose);
 		determinantBt.getChildren().add(btDeterminant);
 		invertibleBt.getChildren().add(btInvertible);
-	// -----------------------------------------------	
+		// -----------------------------------------------
 		Group root = new Group();
-		
+
 		GridPane gp = new GridPane();
 		gp.getColumnConstraints().add(new ColumnConstraints(300));
 		gp.getColumnConstraints().add(new ColumnConstraints(200));
 		gp.getColumnConstraints().add(new ColumnConstraints(300));
 		gp.setHgap(15);
 		gp.setVgap(10);
-		
-		//Row 1
+
+		// Row 1
 		GridPane.setConstraints(btHome, 0, 0);
 		GridPane.setConstraints(l_sceneTitle, 1, 0);
-		
-		//Row 2
+
+		// Row 2
 		GridPane.setConstraints(l_instruction, 0, 1);
 		GridPane.setConstraints(l_result, 2, 1);
-		//Row 3
+		// Row 3
 		GridPane.setConstraints(inputBox, 0, 2);
 		GridPane.setConstraints(parseBt, 1, 2);
 		GridPane.setConstraints(parseOut, 2, 2);
-		//Row 4
+		// Row 4
 		GridPane.setConstraints(transposeBt, 0, 3);
 		GridPane.setConstraints(determinantBt, 1, 3);
 		GridPane.setConstraints(invertibleBt, 2, 3);
-		//Row 5
+		// Row 5
 		GridPane.setConstraints(l_transpose, 0, 4);
 		GridPane.setConstraints(l_determinant, 1, 4);
 		GridPane.setConstraints(l_invertible, 2, 4);
-		//Row 6
+		// Row 6
 		GridPane.setConstraints(transposeOut, 0, 5);
 		GridPane.setConstraints(determinantOut, 1, 5);
 		GridPane.setConstraints(invertibleOut, 2, 5);
-		
+
 		// GridPane add Children
-		gp.getChildren().addAll(btHome, l_sceneTitle,
-				l_instruction, l_result,
-				inputBox, parseBt, parseOut,
-				transposeBt, determinantBt, invertibleBt,
-				l_transpose, l_determinant, l_invertible,
-				transposeOut, determinantOut, invertibleOut);
-		
+		gp.getChildren().addAll(btHome, l_sceneTitle, l_instruction, l_result, inputBox, parseBt, parseOut, transposeBt,
+				determinantBt, invertibleBt, l_transpose, l_determinant, l_invertible, transposeOut, determinantOut,
+				invertibleOut);
+
 		root.getChildren().add(gp);
-		
+
 		// ------------- //
 		return new Scene(root);
 	}

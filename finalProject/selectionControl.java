@@ -8,31 +8,27 @@ public class selectionControl {
 
 	private Main_GUI main;
 
-	@FXML 
+	@FXML
 	private void ReturnBt() throws IOException {
 
 		main.showHomePage(); // #2
 
 	}
-	
-	
+
 	@FXML
-	private void ToMatrix() throws IOException{
+	private void ToMatrix() throws IOException {
 		System.out.println("ToMatrix() BT clicked");
-		
-		main.ToMatrixPage();     // #3   
-		
+
+		main.ToMatrixPage(); // #3
+
 	}
-	
-	
+
 	@FXML
-	private void ToVector() throws IOException{
+	private void ToVector() throws IOException {
 		System.out.println("ToVector() BT clicked");
-		
-		main.ToVectorPage(); 	// #4
-		
+
+		main.ToVectorPage(); // #4
+
 	}
-	
-	
 
 }

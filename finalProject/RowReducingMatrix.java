@@ -41,6 +41,7 @@ public class RowReducingMatrix {
 					rowOn = r;
 
 					pivotNum++; // Allows the matrix to check the next column
+								// --> pivotNum = column it's on
 
 					if (col == pivotNum) // We know that max number of pivots is
 											// max number of row. m[0].length is
@@ -111,6 +112,8 @@ public class RowReducingMatrix {
 
 	public static void addRows(double[][] m, double scalar, int add_scalar_times_this_row, int from_this_row) {
 		// same as above, no need for nested for loops
+		// Note how - sign is used, NOT +, that's because we are trying to get
+		// RID of the number in the row to 03
 		// meant to turn row element into 0
 		for (int c1 = 0; c1 < m[0].length; c1++) {
 			m[from_this_row][c1] = (m[from_this_row][c1]) - (scalar * m[add_scalar_times_this_row][c1]);
@@ -157,7 +160,7 @@ public class RowReducingMatrix {
 			}
 		}
 
-		System.out.println("The matrix: ");
+		System.out.println("The original matrix: ");
 
 		for (int r = 0; r < row; r++) {
 			for (int c = 0; c < col; c++) {
@@ -167,7 +170,7 @@ public class RowReducingMatrix {
 			System.out.println();
 		}
 
-		System.out.println("The matrix row-reduced (Gaussian-Jordan Elimination) (Steps are shown): ");
+		System.out.println("The row-reduced matrix (Gaussian Elimination) (Steps are shown): ");
 		System.out.println();
 
 		rowReduce(matrix);

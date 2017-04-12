@@ -16,11 +16,11 @@
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/git/CS2-FinalProject/Libs/jzy3d-jdt-core-1.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/git/CS2-FinalProject/Libs/jzy3d-svm-mapper-0.9.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/git/CS2-FinalProject/Libs/jzy3d-swt-1.0.0.jar"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/Desktop/jogamp-all-platforms/jar/atomic/jogl-os-osx.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/Desktop/jogamp-all-platforms/jar/jogl-all.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/Desktop/jogamp-all-platforms/jar/gluegen-rt-natives-macosx-universal.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/Desktop/jogamp-all-platforms/jar/gluegen-rt.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Users/anhuynh/Desktop/apache-logging-log4j.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

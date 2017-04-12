@@ -41,10 +41,19 @@ public class FindingDeterminants {
 
 					}
 				}
-				
-				//Recursion used to find determinants of larger matrices 
-				
-				det += Math.pow(-1.0, 1.0 + j1 + 1.0) * M[0][j1] * determinant(m, dim - 1); // to do large determinants it's - + - + ....etc
+
+				// Recursion used to find determinants of larger matrices
+
+				det += Math.pow(-1.0, 1.0 + j1 + 1.0) * M[0][j1] * determinant(m, dim - 1); // to
+																							// do
+																							// large
+																							// determinants
+																							// it's
+																							// -
+																							// +
+																							// -
+																							// +
+																							// ....etc
 
 				System.out.println("determinant: " + det);
 			}

@@ -12,5 +12,5 @@ public class AddScene {
 		testBox.getChildren().add(test);
 		return new Scene(testBox, 100, 100);
 	}
-	
+
 }

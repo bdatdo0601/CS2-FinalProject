@@ -12,15 +12,13 @@ import javafx.scene.control.TextField;
 public class MatrixComplexControl {
 
 	private Main_GUI main;
-	
+
 	@FXML
-	private void MatrixComplexBack2matrixPage() throws IOException
-	{
+	private void MatrixComplexBack2matrixPage() throws IOException {
 		System.out.println("MatrixSimpleBack2matrixPage() BT clicked");
-		
+
 		main.MatrixComplexCBackToMatrixPage();
 
 	}
-	
 
 }

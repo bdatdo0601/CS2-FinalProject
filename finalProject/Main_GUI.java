@@ -31,9 +31,9 @@ public class Main_GUI extends Application {
 		scene = new Scene(MainLayout);
 		PrimaryStage.setScene(scene);
 		PrimaryStage.show();
-		
-		Main_GUI.PrimaryStage.setResizable(false); 
-		//set the window to 800x600 fixed
+
+		Main_GUI.PrimaryStage.setResizable(false);
+		// set the window to 800x600 fixed
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Home
@@ -51,8 +51,8 @@ public class Main_GUI extends Application {
 	// PrimaryStage.show();
 	// }
 	/**
-	// allow user to click the button to press "Enter" to go to the next
-	// selection page ###################################1
+	 * // allow user to click the button to press "Enter" to go to the next //
+	 * selection page ###################################1
 	 */
 	public static void showSelectionPage() throws IOException {
 
@@ -80,8 +80,8 @@ public class Main_GUI extends Application {
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Selection
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Page
 	/**
-	// allow user to click the "Return"(from selection page) bt to return to
-	// homepage #####################################2
+	 * // allow user to click the "Return"(from selection page) bt to return to
+	 * // homepage #####################################2
 	 */
 	public static void showHomePage() throws IOException {
 
@@ -95,8 +95,8 @@ public class Main_GUI extends Application {
 	}
 
 	/**
-	// allow user to click "Matrix" bt (from selection page) to Matrix page #3
-	 * ##########################################3
+	 * // allow user to click "Matrix" bt (from selection page) to Matrix page
+	 * #3 ##########################################3
 	 */
 	public static void ToMatrixPage() throws IOException {
 
@@ -106,11 +106,11 @@ public class Main_GUI extends Application {
 		System.out.println("MatrixPage.fxml is opened"); ///////////////
 		Pane pane = loader4.load();
 		MainLayout.setCenter(pane);
-	}	
+	}
 
 	/**
-	// allow user to click "Vector" bt (from selection page) to Vector page #3
-	 * ##########################################4
+	 * // allow user to click "Vector" bt (from selection page) to Vector page
+	 * #3 ##########################################4
 	 */
 	public static void ToVectorPage() throws IOException {
 
@@ -121,15 +121,13 @@ public class Main_GUI extends Application {
 		Pane pane = loader4.load();
 		MainLayout.setCenter(pane);
 	}
-	
-	
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Matrix
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Page
 
 	/**
 	 * allow user to click the "Back" (from Matrix page) to to back to selection
-	 * page   ####################################5
+	 * page ####################################5
 	 * 
 	 **/
 	public static void MatrixBackToSelectionPage() throws IOException {
@@ -141,11 +139,10 @@ public class Main_GUI extends Application {
 		Pane pane = loader3.load();
 		MainLayout.setCenter(pane);
 	}
-	
-	
+
 	/**
-	 * allow user to click the "Simple" (from Matrix page) to go to Matrix-simple calculator page
-	 * page   ####################################
+	 * allow user to click the "Simple" (from Matrix page) to go to
+	 * Matrix-simple calculator page page ####################################
 	 * 
 	 **/
 	public static void MatrixToMatrixSimpleCPage() throws IOException {
@@ -153,14 +150,14 @@ public class Main_GUI extends Application {
 		System.out.println("MatrixToMatrixSimplePage() is called");
 		FXMLLoader loader6 = new FXMLLoader();
 		loader6.setLocation(Main_GUI.class.getResource("Matrix-simpleC.fxml"));
-//		System.out.println("SelectionPage.fxml is opened");
+		// System.out.println("SelectionPage.fxml is opened");
 		Pane pane = loader6.load();
 		MainLayout.setCenter(pane);
 	}
-	
+
 	/**
-	 * allow user to click the "Complex" (from Matrix page) to go to Matrix-Complex calculator page
-	 * page   ####################################
+	 * allow user to click the "Complex" (from Matrix page) to go to
+	 * Matrix-Complex calculator page page ####################################
 	 * 
 	 **/
 	public static void MatrixToMatrixComplexCPage() throws IOException {
@@ -168,12 +165,11 @@ public class Main_GUI extends Application {
 		System.out.println("MatrixToMatrixComplexPage() is called");
 		FXMLLoader loader9 = new FXMLLoader();
 		loader9.setLocation(Main_GUI.class.getResource("Matrix-complexC.fxml"));
-//		System.out.println("SelectionPage.fxml is opened");
+		// System.out.println("SelectionPage.fxml is opened");
 		Pane pane = loader9.load();
 		MainLayout.setCenter(pane);
 	}
-	
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Vector
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Page
 
@@ -181,9 +177,8 @@ public class Main_GUI extends Application {
 	 * allow user to click the "Back" (from Vector page) to to back to selection
 	 * page #####################################6
 	 **/
-	
+
 	public static void VectorBackToSelectionPage() throws IOException {
-		
 
 		System.out.println("BackToSelectionPage() is called");
 		FXMLLoader loader5 = new FXMLLoader();
@@ -192,13 +187,14 @@ public class Main_GUI extends Application {
 		Pane pane = loader5.load();
 		MainLayout.setCenter(pane);
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Matrix
-	///////////////////////////////////////////////////////////////////////////////////////////////////// Simple section
-	
+	///////////////////////////////////////////////////////////////////////////////////////////////////// Simple
+	///////////////////////////////////////////////////////////////////////////////////////////////////// section
+
 	/**
-	 * allow user to click the "Back" (from matrix-Simple page) to go back to Matrix page
-	 *    ####################################
+	 * allow user to click the "Back" (from matrix-Simple page) to go back to
+	 * Matrix page ####################################
 	 * 
 	 **/
 	public static void MatrixSimpleCBackToMatrixPage() throws IOException {
@@ -206,17 +202,18 @@ public class Main_GUI extends Application {
 		System.out.println("MatrixSimpleCBackToMatrixPage() is called");
 		FXMLLoader loader7 = new FXMLLoader();
 		loader7.setLocation(Main_GUI.class.getResource("matrixPage.fxml"));
-//		System.out.println("SelectionPage.fxml is opened");
+		// System.out.println("SelectionPage.fxml is opened");
 		Pane pane = loader7.load();
 		MainLayout.setCenter(pane);
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////// Matrix
-	///////////////////////////////////////////////////////////////////////////////////////////////////// Complex section
+	///////////////////////////////////////////////////////////////////////////////////////////////////// Complex
+	///////////////////////////////////////////////////////////////////////////////////////////////////// section
 
 	/**
-	 * allow user to click the "Back" (from matrix-Simple page) to go back to Matrix page
-	 *    ####################################
+	 * allow user to click the "Back" (from matrix-Simple page) to go back to
+	 * Matrix page ####################################
 	 * 
 	 **/
 	public static void MatrixComplexCBackToMatrixPage() throws IOException {
@@ -224,15 +221,10 @@ public class Main_GUI extends Application {
 		System.out.println("MatrixSimpleCBackToMatrixPage() is called");
 		FXMLLoader loader8 = new FXMLLoader();
 		loader8.setLocation(Main_GUI.class.getResource("matrixPage.fxml"));
-//		System.out.println("SelectionPage.fxml is opened");
+		// System.out.println("SelectionPage.fxml is opened");
 		Pane pane = loader8.load();
 		MainLayout.setCenter(pane);
 	}
-	
-	
-	
-	
-	
 
 	public static void Main_GUI(String[] args) {
 		launch(args);

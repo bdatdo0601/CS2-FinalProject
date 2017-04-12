@@ -5,8 +5,7 @@ import java.io.IOException;
 import finalProject.Main_GUI;
 import javafx.fxml.FXML;
 
-public class MainItemsControl 
-{
+public class MainItemsControl {
 
 	private Main_GUI main;
 
@@ -18,10 +17,10 @@ public class MainItemsControl
 
 	}
 
-//	 @FXML
-//	 private void MainBackBt() throws IOException{
-//	
-//	 main.showHomePage();
-//	
-//	 }
+	// @FXML
+	// private void MainBackBt() throws IOException{
+	//
+	// main.showHomePage();
+	//
+	// }
 }

@@ -17,18 +17,18 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	
+
 	@Override
-	public void start(Stage primaryStage) throws Exception{
-		
+	public void start(Stage primaryStage) throws Exception {
+
 		primaryStage.setTitle("Matrix Magicians");
 		primaryStage.setScene(MainScene.mainScene(primaryStage));
 		primaryStage.setHeight(400);
 		primaryStage.show();
 	}
-		
+
 	public static void main(String[] args) throws Exception {
-		
+
 		Application.launch(args);
 	}
 
