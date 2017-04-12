@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calculator.MatrixSimpleControl">
+   <top>
+      <ToolBar prefHeight="60.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#MatrixSimpleBack2matrixPage" prefHeight="40.0" prefWidth="80.0" text="Back" translateX="8.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="     Add     ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="TOP_LEFT" layoutX="124.0" layoutY="72.0" prefHeight="160.0" prefWidth="179.0" />
+                        <TextField alignment="TOP_LEFT" layoutX="124.0" layoutY="272.0" prefHeight="160.0" prefWidth="179.0" />
+                        <Label fx:id="myMessage" alignment="TOP_CENTER" contentDisplay="BOTTOM" layoutX="499.0" layoutY="72.0" prefHeight="364.0" prefWidth="228.0" text="output" />
+                        <Button layoutX="372.0" layoutY="75.0" mnemonicParsing="false" onAction="#ClickMe" prefHeight="359.0" prefWidth="59.0" text="Button" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="     Subract     ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="TOP_LEFT" layoutX="124.0" layoutY="72.0" prefHeight="160.0" prefWidth="179.0" />
+                        <TextField alignment="TOP_LEFT" layoutX="124.0" layoutY="272.0" prefHeight="160.0" prefWidth="179.0" />
+                        <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" layoutX="499.0" layoutY="72.0" prefHeight="364.0" prefWidth="228.0" text="output" />
+                        <Button layoutX="372.0" layoutY="75.0" mnemonicParsing="false" prefHeight="359.0" prefWidth="59.0" text="Button" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="     Multiply     ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField alignment="TOP_LEFT" layoutX="124.0" layoutY="72.0" prefHeight="160.0" prefWidth="179.0" />
+                        <TextField alignment="TOP_LEFT" layoutX="124.0" layoutY="272.0" prefHeight="160.0" prefWidth="179.0" />
+                        <Label alignment="TOP_CENTER" contentDisplay="BOTTOM" layoutX="499.0" layoutY="72.0" prefHeight="364.0" prefWidth="228.0" text="output" />
+                        <Button layoutX="372.0" layoutY="75.0" mnemonicParsing="false" prefHeight="359.0" prefWidth="59.0" text="Button" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
